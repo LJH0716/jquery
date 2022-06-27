@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./assets/js/jquery/jquery-1.12.4.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<p></p>
+	<ul>
+		<li id="first" class="red">첫번째 아이템입니다.</li>
+		<li id="second" class="blue"><strong>두번째 아이템입니다.</strong></li>
+		<li id="third" class="del">세번째 아이템입니다.</li>
+		<li><strong>네번째 아이템입니다.</strong></li>
+		
+	</ul>
+	<button id="btn" type="button">li요소추가</button>
+	
+</body>
+
+<script type="text/javascript">
+//버튼을 클릭했을 때
+$("#btn").on("click", function(){
+	console.log("버튼클릭");
+	
+	$("ul").append("<li>다섯번째 아이템입니다.</li>");
+	$("ul").append("<li>여섯번째 아이템입니다.</li>");
+	$("ul").append("<li>일곱번째 아이템입니다.</li>"); //DOM으로 바뀌지 않고 강제로 추가함,-->click 이벤트가 적용안됨
+		
+});//이 상태에서는 요소 추가 버튼 누르면 계속 값이 들어감
+
+//li태그를 클릭했을 때 부모한테 클릭 이벤트를 주고 자식(li)에게 위임
+$("ul").on("click","li",function(){
+	$this = $(this);
+	var str = $this.text();
+	console.log(str);
+});
+
+/*
+//li태그를 클릭했을 때 --> 제이쿼리에 추가해놓은 li때문에 클릭 이벤트가 적용 안 됨
+$("li").on("click",function(){
+	var $this = $(this); 
+	
+	var str = $this.text();
+	console.log(str);
+});
+*/
+
+</script>	
+
+
+</html>
